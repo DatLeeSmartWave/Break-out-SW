@@ -8,6 +8,7 @@ TagManager:
   - TopEdge
   - RightEdge
   - BottomEdge
+  - Ball
   layers:
   - Default
   - TransparentFX
