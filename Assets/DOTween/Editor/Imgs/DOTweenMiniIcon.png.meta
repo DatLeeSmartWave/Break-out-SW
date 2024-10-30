@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 13daf3179ee033f4a93ac6b25a36f6f0
+guid: c4a76c6b3cd388b4984f4006160ccdeb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4182720538563319434
-    second: Brick 2_0
+      213: 3691463601059337291
+    second: DOTweenMiniIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Brick 2_0
+      name: DOTweenMiniIcon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 162
-        height: 48
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 679e338c4ddf3f5c0800000000000000
-      internalID: -4182720538563319434
+      spriteID: b441d624696ba3330800000000000000
+      internalID: 3691463601059337291
       vertices: []
       indices: 
       edges: []
@@ -157,7 +157,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Brick 2_0: -4182720538563319434
+      DOTweenMiniIcon_0: 3691463601059337291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
