@@ -1366,7 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformSpawn: {fileID: 1755400894}
-  shopItemPf: {fileID: 0}
+  shopItemPf: {fileID: 8961982616498200626, guid: 8b3e3c34c771b5b4e884829317c1b16c, type: 3}
   items:
   - posPack: 1
     numRuby: 5
