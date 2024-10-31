@@ -7,6 +7,7 @@ public class Brick : MonoBehaviour {
         if (collision.gameObject.tag == "Ball") {
             healthPoint--;
             if (healthPoint <= 0) {
+                FindObjectOfType<PlaySceneUimanager>().PlusScore(100);
                 gameObject.SetActive(false);
             }
         }

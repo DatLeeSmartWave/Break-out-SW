@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HomeSceneUiManager : MonoBehaviour
@@ -8,8 +10,10 @@ public class HomeSceneUiManager : MonoBehaviour
     [SerializeField] private Image soundOffButton;
     [SerializeField] private Image musicOnButton;
     [SerializeField] private Image musicOffButton;
+    [SerializeField] private TextMeshProUGUI heartNumberText;
     int soundId;
     int musicId;
+    int heartNumber;
 
     private void Awake() {
         Application.targetFrameRate = 60;
@@ -19,6 +23,8 @@ public class HomeSceneUiManager : MonoBehaviour
     void Start()
     {
         SetUpSoundEffectIcon();
+        heartNumber = PlayerPrefs.GetInt(StringManager.HeartNumber);
+        heartNumberText.text = heartNumber.ToString();
     }
 
     ///  Button Zone
@@ -53,6 +59,16 @@ public class HomeSceneUiManager : MonoBehaviour
             musicOffButton.sprite = settingButtonStatus[1];
             PlayerPrefs.SetInt(StringManager.MusicId, 0);
         }
+    }
+
+    public void BuyHeartButton(int number) {
+        heartNumber+=number;
+        PlayerPrefs.SetInt(StringManager.HeartNumber, heartNumber);
+        heartNumberText.text = heartNumber.ToString();
+    }
+
+    public void LoadScene(string sceneName) {
+        SceneManager.LoadScene(sceneName);
     }
 
     /// Fuction Zone  
