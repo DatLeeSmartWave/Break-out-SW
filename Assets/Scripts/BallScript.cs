@@ -31,12 +31,25 @@ public class BallScript : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "BottomEdge") {
-            transform.SetParent(paddelRed.transform);
-            PlayerPrefs.SetInt(StringManager.ShootBallId, 0);
-            transform.position = paddelRedPlatform.position;
-            rb.isKinematic = true;
-            rb.velocity = Vector3.zero;
+            //PlayerPrefs.SetInt(StringManager.ShootBallId, 0);
+            //transform.position = paddelRedPlatform.position;
+            //rb.isKinematic = true;
+            //rb.velocity = Vector3.zero;
+            ResetBall();
+            FindObjectOfType<PlaySceneUimanager>().MinusHeartNumber(1);
+            if(PlayerPrefs.GetInt(StringManager.HeartNumber) == 0)
+            {
+                FindObjectOfType<PlaySceneUimanager>().ShowLosePanel();
+            }
         }
+    }
+
+    public void ResetBall() {
+        transform.SetParent(paddelRed.transform);
+        rb.isKinematic = false;
+        rb.velocity = Vector3.zero;
+        transform.position = paddelRedPlatform.position;
+        PlayerPrefs.SetInt(StringManager.ShootBallId, 0);
     }
 
     private bool IsPointerOverUIElement() {

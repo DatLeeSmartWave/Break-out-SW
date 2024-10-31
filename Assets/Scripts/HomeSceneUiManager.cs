@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HomeSceneUiManager : MonoBehaviour
-{
+public class HomeSceneUiManager : MonoBehaviour {
     [SerializeField] private Sprite[] settingButtonStatus;
     [SerializeField] private Image soundOnButton;
     [SerializeField] private Image soundOffButton;
     [SerializeField] private Image musicOnButton;
     [SerializeField] private Image musicOffButton;
     [SerializeField] private TextMeshProUGUI heartNumberText;
+    [SerializeField] UiPanelDotween noticePanel;
     int soundId;
     int musicId;
     int heartNumber;
@@ -20,8 +20,7 @@ public class HomeSceneUiManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         SetUpSoundEffectIcon();
         heartNumber = PlayerPrefs.GetInt(StringManager.HeartNumber);
         heartNumberText.text = heartNumber.ToString();
@@ -62,22 +61,25 @@ public class HomeSceneUiManager : MonoBehaviour
     }
 
     public void BuyHeartButton(int number) {
-        heartNumber+=number;
+        heartNumber += number;
         PlayerPrefs.SetInt(StringManager.HeartNumber, heartNumber);
         heartNumberText.text = heartNumber.ToString();
     }
 
     public void LoadScene(string sceneName) {
-        SceneManager.LoadScene(sceneName);
+        if (PlayerPrefs.GetInt(StringManager.HeartNumber) > 0)
+            SceneManager.LoadScene(sceneName);
+        else
+            noticePanel.PanelFadeIn();
     }
 
     /// Fuction Zone  
 
     void SetUpSoundEffectIcon() {
-        soundId = PlayerPrefs.GetInt(StringManager.SoundId,1);
-        PlayerPrefs.SetInt(StringManager.MusicId,soundId);
-        musicId = PlayerPrefs.GetInt(StringManager.MusicId,1);
-        PlayerPrefs.SetInt(StringManager.SoundId,musicId);
+        soundId = PlayerPrefs.GetInt(StringManager.SoundId, 1);
+        PlayerPrefs.SetInt(StringManager.MusicId, soundId);
+        musicId = PlayerPrefs.GetInt(StringManager.MusicId, 1);
+        PlayerPrefs.SetInt(StringManager.SoundId, musicId);
         if (PlayerPrefs.GetInt(StringManager.SoundId) == 1) {
             soundOnButton.sprite = settingButtonStatus[1];
             soundOffButton.sprite = settingButtonStatus[0];
