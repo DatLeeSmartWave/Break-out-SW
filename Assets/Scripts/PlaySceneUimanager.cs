@@ -14,6 +14,9 @@ public class PlaySceneUimanager : MonoBehaviour {
     [SerializeField] GameObject[] levelObjects;
     [SerializeField] UiPanelDotween losePanel;
     [SerializeField] TextMeshProUGUI scoreText2;
+    [SerializeField] GameObject loseIcon;
+    [SerializeField] GameObject winIcon;
+    bool hasFadedIn = false;
 
     private float elapsedTime;
     private int currentLevelIndex = 0;
@@ -64,8 +67,18 @@ public class PlaySceneUimanager : MonoBehaviour {
             levelId += 1;
             levelText.text = levelId.ToString();
             FindObjectOfType<BallScript>().ResetBall();
-            if (levelObjects[10].activeSelf)
-                losePanel.PanelFadeIn();
+            if (levelObjects[9].activeSelf) {
+                ShowWinPanel();
+            }
+        }
+    }
+
+    void ShowWinPanel() {
+        if (!hasFadedIn) {
+            losePanel.PanelFadeIn();
+            winIcon.SetActive(true);
+            loseIcon.SetActive(false);
+            hasFadedIn = true;
         }
     }
 
