@@ -8,6 +8,7 @@ public class Brick : MonoBehaviour {
             healthPoint--;
             if (healthPoint <= 0) {
                 FindObjectOfType<PlaySceneUimanager>().PlusScore(100);
+                FindObjectOfType<SoundManager>().PlayDestroyBrick();
                 gameObject.SetActive(false);
             }
         }

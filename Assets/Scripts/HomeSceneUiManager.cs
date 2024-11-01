@@ -17,11 +17,11 @@ public class HomeSceneUiManager : MonoBehaviour {
 
     private void Awake() {
         Application.targetFrameRate = 60;
+        SetUpSoundEffectIcon();
     }
 
     // Start is called before the first frame update
     void Start() {
-        SetUpSoundEffectIcon();
         heartNumber = PlayerPrefs.GetInt(StringManager.HeartNumber);
         heartNumberText.text = heartNumber.ToString();
     }
@@ -33,6 +33,7 @@ public class HomeSceneUiManager : MonoBehaviour {
             soundOnButton.sprite = settingButtonStatus[1];
             soundOffButton.sprite = settingButtonStatus[0];
             PlayerPrefs.SetInt(StringManager.SoundId, 1);
+            FindObjectOfType<SoundManager>().TurnOnSound();
         }
     }
 
@@ -41,6 +42,7 @@ public class HomeSceneUiManager : MonoBehaviour {
             soundOnButton.sprite = settingButtonStatus[0];
             soundOffButton.sprite = settingButtonStatus[1];
             PlayerPrefs.SetInt(StringManager.SoundId, 0);
+            FindObjectOfType<SoundManager>().TurnOffSound();
         }
     }
 
@@ -49,6 +51,7 @@ public class HomeSceneUiManager : MonoBehaviour {
             musicOnButton.sprite = settingButtonStatus[1];
             musicOffButton.sprite = settingButtonStatus[0];
             PlayerPrefs.SetInt(StringManager.MusicId, 1);
+            FindObjectOfType<MusicManager>().TurnOnMusic();
         }
     }
 
@@ -57,6 +60,7 @@ public class HomeSceneUiManager : MonoBehaviour {
             musicOnButton.sprite = settingButtonStatus[0];
             musicOffButton.sprite = settingButtonStatus[1];
             PlayerPrefs.SetInt(StringManager.MusicId, 0);
+            FindObjectOfType<MusicManager>().TurnOffMusic();
         }
     }
 

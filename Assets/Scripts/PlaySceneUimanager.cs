@@ -79,6 +79,7 @@ public class PlaySceneUimanager : MonoBehaviour {
             winIcon.SetActive(true);
             loseIcon.SetActive(false);
             hasFadedIn = true;
+            FindObjectOfType<SoundManager>().PlayWinSound();
         }
     }
 
@@ -98,6 +99,7 @@ public class PlaySceneUimanager : MonoBehaviour {
 
     public void ShowLosePanel() {
         losePanel.PanelFadeIn();
+        FindObjectOfType<SoundManager>().PlayLoseSound();
         scoreText2.text = PlayerPrefs.GetInt(StringManager.Score).ToString();
     }
 
